@@ -2,7 +2,8 @@
 <html lang="id" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#020617" />
   <title>CryptoWeb Suite — Tugas Web Ayunda | Cybersecurity Cryptography Dashboard</title>
 
   <!-- Tailwind CSS via CDN -->
@@ -29,8 +30,8 @@
             mono: ['JetBrains Mono', 'monospace'],
           },
           boxShadow: {
-            'glow-cyan': '0 0 30px -5px rgba(6, 182, 212, 0.45)',
-            'glow-indigo': '0 0 30px -5px rgba(99, 102, 241, 0.45)',
+            'glow-cyan': '0 0 28px -5px rgba(6, 182, 212, 0.45)',
+            'glow-indigo': '0 0 28px -5px rgba(99, 102, 241, 0.45)',
             'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.45)',
           },
           animation: {
@@ -40,7 +41,7 @@
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' },
+              '50%': { transform: 'translateY(-6px)' },
             }
           }
         }
@@ -51,83 +52,84 @@
   <style>
     :root {
       color-scheme: dark;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       background-color: #020617;
       background-image:
-        radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.18) 0px, transparent 50%),
-        radial-gradient(at 100% 15%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.18) 0px, transparent 52%),
+        radial-gradient(at 100% 15%, rgba(99, 102, 241, 0.18) 0px, transparent 52%),
         radial-gradient(at 50% 100%, rgba(14, 165, 233, 0.12) 0px, transparent 55%);
       background-attachment: fixed;
       overflow-x: hidden;
     }
 
-    /* Animated Cyber Grid Background */
+    /* Subtle Cyber Grid Background */
     .bg-cyber-grid {
-      background-size: 38px 38px;
+      background-size: 34px 34px;
       background-image:
-        linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+        linear-gradient(to right, rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
     }
 
     /* Glassmorphism Cards & Surfaces */
     .glass-panel {
-      background: rgba(15, 23, 42, 0.62);
+      background: rgba(15, 23, 42, 0.68);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.09);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .glass-panel-interactive:hover {
-      border-color: rgba(34, 211, 238, 0.35);
-      box-shadow: 0 12px 40px -12px rgba(6, 182, 212, 0.2);
+    .glass-input {
+      background: rgba(2, 6, 23, 0.82);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      /* Prevent iOS auto-zoom on focus by keeping font-size >= 16px on mobile */
+      font-size: 16px;
     }
 
-    .glass-input {
-      background: rgba(2, 6, 23, 0.78);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    @media (min-width: 640px) {
+      .glass-input {
+        font-size: 14px;
+      }
     }
 
     .glass-input:focus {
       outline: none;
       border-color: rgba(34, 211, 238, 0.85);
       box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18), 0 0 20px -4px rgba(6, 182, 212, 0.35);
-      transform: translateY(-1px);
     }
 
     /* Tab Panel Smooth Transitions */
     .tab-panel-enter {
-      animation: tabReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: tabReveal 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes tabReveal {
       0% {
         opacity: 0;
-        transform: translateY(14px) scale(0.985);
-        filter: blur(4px);
+        transform: translateY(12px) scale(0.985);
       }
       100% {
         opacity: 1;
         transform: translateY(0) scale(1);
-        filter: blur(0);
       }
     }
 
     /* Output Cyber Pulse Effect */
     .output-flash {
-      animation: cyberFlash 0.65s ease-out;
+      animation: cyberFlash 0.75s ease-out;
     }
 
     @keyframes cyberFlash {
       0% {
-        border-color: rgba(34, 211, 238, 0.9);
-        box-shadow: 0 0 30px rgba(6, 182, 212, 0.55), inset 0 0 20px rgba(6, 182, 212, 0.2);
+        border-color: rgba(34, 211, 238, 0.95);
+        box-shadow: 0 0 32px rgba(6, 182, 212, 0.5), inset 0 0 18px rgba(6, 182, 212, 0.18);
       }
       100% {
-        border-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.1);
         box-shadow: none;
       }
     }
@@ -148,10 +150,15 @@
       50% { height: 14px; }
     }
 
+    /* Safe Area Padding for Mobile Bottom Navigation */
+    .pb-safe-mobile {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: rgba(2, 6, 23, 0.9);
@@ -160,28 +167,25 @@
       background: rgba(56, 189, 248, 0.3);
       border-radius: 9999px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(56, 189, 248, 0.55);
-    }
   </style>
 </head>
-<body class="min-h-screen text-slate-100 font-sans antialiased selection:bg-cyan-400 selection:text-slate-950 bg-cyber-grid flex flex-col justify-between relative">
+<body class="min-h-screen text-slate-100 font-sans antialiased selection:bg-cyan-400 selection:text-slate-950 bg-cyber-grid flex flex-col justify-between relative pb-safe-mobile sm:pb-0">
 
   <!-- Ambient Floating Glow Orbs -->
-  <div class="fixed top-20 left-5 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slow"></div>
-  <div class="fixed bottom-16 right-5 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slow"></div>
+  <div class="fixed top-16 left-2 w-56 h-56 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slow"></div>
+  <div class="fixed bottom-20 right-2 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slow"></div>
 
-  <!-- Toast Notification Container -->
-  <div id="toast-container" class="fixed top-4 right-4 left-4 sm:left-auto z-50 flex flex-col gap-2.5 sm:max-w-sm w-auto pointer-events-none"></div>
+  <!-- Toast Notification Container (Top on Desktop, Above Bottom-Nav on Mobile) -->
+  <div id="toast-container" class="fixed top-16 sm:top-5 right-3 left-3 sm:left-auto z-50 flex flex-col gap-2 sm:max-w-sm w-auto pointer-events-none"></div>
 
   <!-- ========================================== -->
-  <!-- TOP NAVBAR & CONTROLS                      -->
+  <!-- TOP NAVBAR (COMPACT & MOBILE FRIENDLY)     -->
   <!-- ========================================== -->
-  <header class="border-b border-white/10 bg-slate-950/75 backdrop-blur-xl sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3">
+  <header class="border-b border-white/10 bg-slate-950/85 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2">
       <!-- Brand Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-cyan-400 via-sky-500 to-indigo-600 p-0.5 shadow-glow-cyan flex items-center justify-center animate-float">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-cyan-400 via-sky-500 to-indigo-600 p-0.5 shadow-glow-cyan flex items-center justify-center shrink-0">
           <div class="w-full h-full bg-slate-950/90 rounded-[10px] flex items-center justify-center">
             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -189,27 +193,27 @@
             </svg>
           </div>
         </div>
-        <div>
+        <div class="truncate">
           <div class="flex items-center gap-2">
-            <h1 class="text-lg sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+            <h1 class="text-base sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-400 bg-clip-text text-transparent truncate">
               CryptoWeb Suite
             </h1>
-            <span class="hidden xs:inline-block text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">
+            <span class="hidden md:inline-block text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">
               PRO EDITION
             </span>
           </div>
-          <p class="text-[11px] sm:text-xs text-slate-400">Interactive Multi-Algorithm Cryptography Workbench</p>
+          <p class="text-[11px] sm:text-xs text-slate-400 truncate">Cybersecurity Encryption Workbench</p>
         </div>
       </div>
 
-      <!-- Right Controls: Author Pill & Sound FX Toggle -->
-      <div class="flex items-center gap-2 sm:gap-3 ml-auto sm:ml-0">
+      <!-- Right Controls: Sound FX Toggle & Identity Pill -->
+      <div class="flex items-center gap-2 shrink-0">
         <!-- Sound FX Synthesizer Toggle -->
         <button
           type="button"
           id="btn-sound-toggle"
           onclick="toggleSoundFX()"
-          class="sound-active inline-flex items-center gap-2 text-xs font-mono px-3 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/30 text-cyan-300 transition shadow-sm"
+          class="sound-active inline-flex items-center justify-center gap-1.5 text-xs font-mono h-9 sm:h-10 px-2.5 sm:px-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/35 text-cyan-300 transition active:scale-95"
           title="Aktifkan / Matikan Efek Suara Interaktif"
         >
           <div class="flex items-end gap-0.5 h-3.5">
@@ -217,21 +221,21 @@
             <span class="sound-bar sound-bar-2 h-3.5"></span>
             <span class="sound-bar sound-bar-3 h-1.5"></span>
           </div>
-          <span id="sound-status-text" class="hidden sm:inline">SFX: ON</span>
+          <span id="sound-status-text" class="text-[11px] font-bold">SFX</span>
         </button>
 
         <!-- Identity Quick Badge -->
         <button
           type="button"
           onclick="toggleIdentityModal()"
-          class="inline-flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500/15 to-indigo-500/20 hover:from-cyan-500/25 hover:to-indigo-500/30 border border-cyan-400/35 transition shadow-sm group"
+          class="inline-flex items-center gap-2 h-9 sm:h-10 pl-1.5 pr-2.5 sm:pr-3 rounded-xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 hover:from-cyan-500/30 hover:to-indigo-500/30 border border-cyan-400/40 transition active:scale-95"
         >
-          <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 text-slate-950 font-extrabold text-xs flex items-center justify-center shadow">
+          <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 text-slate-950 font-extrabold text-xs flex items-center justify-center shadow">
             A
           </span>
-          <div class="text-left">
-            <p class="text-[10px] font-mono uppercase tracking-wider text-cyan-300 leading-none">Tugas Web</p>
-            <p class="text-xs font-bold text-white group-hover:text-cyan-200 transition leading-tight">Ayunda</p>
+          <div class="text-left leading-none">
+            <p class="text-[9px] font-mono uppercase tracking-wider text-cyan-300">Tugas</p>
+            <p class="text-xs font-extrabold text-white">Ayunda</p>
           </div>
         </button>
       </div>
@@ -241,74 +245,74 @@
   <!-- ========================================== -->
   <!-- MAIN CONTENT CONTAINER                     -->
   <!-- ========================================== -->
-  <main class="max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1">
+  <main class="max-w-6xl w-full mx-auto px-3.5 sm:px-6 py-4 sm:py-8 flex-1">
 
     <!-- ========================================== -->
     <!-- IDENTITAS TUGAS BANNER (AYUNDA)            -->
     <!-- ========================================== -->
-    <div class="glass-panel glass-panel-interactive rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 relative overflow-hidden border border-cyan-500/25">
-      <div class="absolute -right-12 -top-12 w-40 h-40 bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="glass-panel rounded-2xl p-4 sm:p-5 mb-4 sm:mb-7 relative overflow-hidden border border-cyan-500/30 shadow-lg">
+      <div class="absolute -right-10 -top-10 w-36 h-36 bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full blur-2xl pointer-events-none"></div>
 
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-        <div class="flex items-start sm:items-center gap-3.5 sm:gap-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4 relative z-10">
+        <div class="flex items-center gap-3 sm:gap-4">
           <!-- Avatar Emblem -->
           <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-cyan-400 via-sky-500 to-indigo-600 p-0.5 shadow-glow-cyan shrink-0">
             <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-              <span class="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent">AY</span>
+              <span class="text-lg sm:text-2xl font-extrabold bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent">AY</span>
             </div>
           </div>
 
-          <div>
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-semibold">
-                Identitas Pembuat Tugas
+          <div class="min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-semibold">
+                Identitas Tugas
               </span>
-              <span class="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+              <span class="text-[10px] sm:text-[11px] font-mono text-emerald-400 flex items-center gap-1">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                Active Session
+                Verified
               </span>
             </div>
-            <h2 class="text-base sm:text-xl font-extrabold text-white mt-1">
+            <h2 class="text-base sm:text-xl font-extrabold text-white mt-0.5 truncate">
               Nama: <span class="bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-300 bg-clip-text text-transparent">Ayunda</span>
             </h2>
-            <p class="text-xs sm:text-sm text-slate-300 mt-0.5">
-              Tugas Pemrograman Web &amp; Keamanan Siber — Implementasi <span class="text-cyan-300 font-medium">Classic Cipher</span>, <span class="text-indigo-300 font-medium">AES-256</span>, dan <span class="text-sky-300 font-medium">RSA Asymmetric</span>.
+            <p class="text-xs text-slate-300 line-clamp-2 sm:line-clamp-none">
+              Aplikasi Enkripsi &amp; Dekripsi: <span class="text-cyan-300 font-semibold">Classic Cipher</span>, <span class="text-indigo-300 font-semibold">AES-256</span>, dan <span class="text-sky-300 font-semibold">RSA</span>.
             </p>
           </div>
         </div>
 
-        <!-- Quick Demo & Audio Test Buttons -->
-        <div class="flex flex-wrap items-center gap-2 sm:self-center">
+        <!-- Quick Action Buttons (Side-by-side 2 columns on mobile for easy thumb reach) -->
+        <div class="grid grid-cols-2 sm:flex items-center gap-2 pt-1 md:pt-0 border-t border-white/10 md:border-none">
           <button
             type="button"
             onclick="fillDemoSample()"
-            class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3.5 py-2.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-200 border border-cyan-400/30 transition active:scale-95"
+            class="min-h-[42px] inline-flex items-center justify-center gap-1.5 text-xs font-bold px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500/20 to-sky-500/20 hover:from-cyan-500/30 hover:to-sky-500/30 text-cyan-200 border border-cyan-400/40 transition active:scale-95"
           >
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            Isi Contoh Otomatis
+            <span>Isi Contoh</span>
           </button>
 
           <button
             type="button"
             onclick="toggleIdentityModal()"
-            class="inline-flex items-center justify-center gap-1.5 text-xs font-medium px-3.5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-white/10 transition"
+            class="min-h-[42px] inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 sm:px-4 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-white/15 transition active:scale-95"
           >
-            <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0" />
             </svg>
-            Detail Kartu Tugas
+            <span>Kartu Tugas</span>
           </button>
         </div>
       </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- INTERACTIVE ALGORITHM TABS                 -->
+    <!-- HORIZONTAL SEGMENTED TABS (MOBILE+DESKTOP) -->
     <!-- ========================================== -->
-    <div class="glass-panel p-1.5 sm:p-2 rounded-2xl mb-6 sm:mb-8 max-w-3xl mx-auto shadow-xl">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2" role="tablist">
+    <div class="glass-panel p-1.5 rounded-2xl mb-5 sm:mb-8 max-w-3xl mx-auto shadow-xl">
+      <div class="grid grid-cols-3 gap-1.5" role="tablist">
         <!-- Tab 1: Classic Cipher -->
         <button
           type="button"
@@ -316,12 +320,12 @@
           onclick="switchTab('classic')"
           role="tab"
           aria-selected="true"
-          class="tab-btn group flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 bg-gradient-to-r from-cyan-500/25 to-indigo-500/25 text-cyan-200 border border-cyan-400/50 shadow-glow-cyan"
+          class="tab-btn group flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 bg-gradient-to-r from-cyan-500/25 to-indigo-500/25 text-cyan-200 border border-cyan-400/50 shadow-glow-cyan active:scale-95"
         >
-          <span class="w-6 h-6 rounded-lg bg-cyan-400/20 border border-cyan-400/40 flex items-center justify-center text-xs font-mono text-cyan-300 group-hover:scale-110 transition-transform">
+          <span class="w-6 h-6 rounded-lg bg-cyan-400/20 border border-cyan-400/40 flex items-center justify-center text-[11px] font-mono text-cyan-300">
             01
           </span>
-          <span>Classic Cipher</span>
+          <span class="truncate">Classic<span class="hidden sm:inline"> Cipher</span></span>
         </button>
 
         <!-- Tab 2: AES Encryption -->
@@ -331,12 +335,12 @@
           onclick="switchTab('aes')"
           role="tab"
           aria-selected="false"
-          class="tab-btn group flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent"
+          class="tab-btn group flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent active:scale-95"
         >
-          <span class="w-6 h-6 rounded-lg bg-indigo-400/15 border border-indigo-400/30 flex items-center justify-center text-xs font-mono text-indigo-300 group-hover:scale-110 transition-transform">
+          <span class="w-6 h-6 rounded-lg bg-indigo-400/15 border border-indigo-400/30 flex items-center justify-center text-[11px] font-mono text-indigo-300">
             02
           </span>
-          <span>AES Encryption</span>
+          <span class="truncate">AES<span class="hidden sm:inline"> Encryption</span></span>
         </button>
 
         <!-- Tab 3: RSA Encryption -->
@@ -346,12 +350,12 @@
           onclick="switchTab('rsa')"
           role="tab"
           aria-selected="false"
-          class="tab-btn group flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent"
+          class="tab-btn group flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent active:scale-95"
         >
-          <span class="w-6 h-6 rounded-lg bg-sky-400/15 border border-sky-400/30 flex items-center justify-center text-xs font-mono text-sky-300 group-hover:scale-110 transition-transform">
+          <span class="w-6 h-6 rounded-lg bg-sky-400/15 border border-sky-400/30 flex items-center justify-center text-[11px] font-mono text-sky-300">
             03
           </span>
-          <span>RSA Encryption</span>
+          <span class="truncate">RSA<span class="hidden sm:inline"> Encryption</span></span>
         </button>
       </div>
     </div>
@@ -359,49 +363,49 @@
     <!-- ========================================== -->
     <!-- TAB 1: CLASSIC CIPHER (CAESAR / VIGENERE)  -->
     <!-- ========================================== -->
-    <section id="tab-panel-classic" class="tab-panel-enter glass-panel rounded-2xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+    <section id="tab-panel-classic" class="tab-panel-enter glass-panel rounded-2xl p-4 sm:p-8 shadow-2xl relative overflow-hidden">
       <div class="absolute -top-24 -right-24 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <!-- Tab Header -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
+      <div class="flex items-start sm:items-center justify-between gap-3 pb-4 sm:pb-5 mb-5 sm:mb-6 border-b border-white/10">
         <div>
           <div class="flex flex-wrap items-center gap-2">
-            <span class="px-2.5 py-1 text-[11px] font-mono font-semibold uppercase rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-              Tab 1 // Substitution Cipher
+            <span class="px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-semibold uppercase rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+              Tab 01 // Substitution
             </span>
-            <h2 class="text-lg sm:text-2xl font-extrabold text-white">Classic Cipher Engine</h2>
+            <h2 class="text-base sm:text-2xl font-extrabold text-white">Classic Cipher Engine</h2>
           </div>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">
-            Pilih metode <strong class="text-cyan-300">Caesar Cipher</strong> (geseran kunci angka) atau <strong class="text-indigo-300">Vigenère Cipher</strong> (kunci kata teks alfabet).
+            Pilih <strong class="text-cyan-300">Caesar Cipher</strong> (geseran angka) atau <strong class="text-indigo-300">Vigenère Cipher</strong> (kunci kata).
           </p>
         </div>
 
         <button
           type="button"
           onclick="clearClassic()"
-          class="self-start sm:self-auto inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-rose-300 bg-slate-900/80 hover:bg-rose-950/40 border border-white/10 hover:border-rose-500/30 px-3.5 py-2 rounded-xl transition active:scale-95"
+          class="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-rose-300 bg-slate-900/90 hover:bg-rose-950/40 border border-white/15 px-3 py-2 rounded-xl transition active:scale-95"
         >
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
           </svg>
-          Bersihkan
+          <span>Reset</span>
         </button>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
         <!-- Left Column: Input & Controls -->
-        <div class="lg:col-span-6 space-y-5">
+        <div class="lg:col-span-6 space-y-4 sm:space-y-5">
           <!-- Pilihan Jenis Cipher -->
           <div>
             <label class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
-              Pilih Jenis Classic Cipher
+              1. Pilih Metode Cipher
             </label>
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
               <button
                 type="button"
                 id="btn-mode-caesar"
                 onclick="setClassicMode('caesar')"
-                class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-cyan-500/20 text-cyan-200 border-cyan-400/60 shadow-glow-cyan"
+                class="min-h-[46px] flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-cyan-500/20 text-cyan-200 border-cyan-400/60 shadow-glow-cyan active:scale-95"
               >
                 <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
                 <span>Caesar Cipher</span>
@@ -411,7 +415,7 @@
                 type="button"
                 id="btn-mode-vigenere"
                 onclick="setClassicMode('vigenere')"
-                class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-slate-900/70 text-slate-400 border-white/10 hover:text-slate-200"
+                class="min-h-[46px] flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-slate-900/75 text-slate-400 border-white/10 hover:text-slate-200 active:scale-95"
               >
                 <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
                 <span>Vigenère Cipher</span>
@@ -424,16 +428,25 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="classic-input" class="block text-xs font-mono uppercase tracking-wider text-slate-300">
-                Kolom Input Teks (Plaintext / Ciphertext)
+                2. Input Teks
               </label>
-              <span id="classic-char-count" class="text-[11px] font-mono text-cyan-400/80">0 karakter</span>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  onclick="pasteFromClipboard('classic-input', 'classic-char-count')"
+                  class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-md active:scale-95"
+                >
+                  Tempel
+                </button>
+                <span id="classic-char-count" class="text-[11px] font-mono text-slate-400">0 kar</span>
+              </div>
             </div>
             <textarea
               id="classic-input"
-              rows="5"
+              rows="4"
               oninput="updateCharCount('classic-input', 'classic-char-count')"
-              placeholder="Ketik pesan yang akan dienkripsi atau didekripsi di sini..."
-              class="w-full rounded-xl p-3.5 text-sm text-slate-100 placeholder-slate-500 glass-input font-mono resize-y"
+              placeholder="Ketik pesan yang ingin dienkripsi atau didekripsi di sini..."
+              class="w-full rounded-xl p-3.5 text-slate-100 placeholder-slate-500 glass-input font-mono resize-y"
             ></textarea>
           </div>
 
@@ -441,27 +454,48 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <label id="classic-key-label" for="classic-key" class="block text-xs font-mono uppercase tracking-wider text-cyan-300">
-                Kolom Key (Geseran Angka Caesar)
+                3. Shift Key (Geseran Angka)
               </label>
-              <span id="classic-key-hint" class="text-[11px] font-mono text-slate-400">Geseran: 1 - 25</span>
+              <span id="classic-key-hint" class="text-[11px] font-mono text-slate-400">Angka 1 - 25</span>
             </div>
-            <input
-              id="classic-key"
-              type="number"
-              value="3"
-              placeholder="Masukkan angka geseran (contoh: 3)"
-              class="w-full rounded-xl p-3.5 text-sm text-slate-100 placeholder-slate-500 glass-input font-mono"
-            />
+            <!-- Stepper friendly for mobile when in Caesar mode -->
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                id="classic-step-minus"
+                onclick="stepCaesarKey(-1)"
+                class="min-h-[46px] w-12 rounded-xl bg-slate-900 border border-white/15 text-cyan-300 font-bold text-lg flex items-center justify-center active:scale-90 transition"
+                title="Kurangi Geseran"
+              >
+                &minus;
+              </button>
+              <input
+                id="classic-key"
+                type="number"
+                value="3"
+                placeholder="Masukkan angka geseran (contoh: 3)"
+                class="w-full min-h-[46px] rounded-xl px-3.5 py-2.5 text-slate-100 placeholder-slate-500 glass-input font-mono text-center sm:text-left"
+              />
+              <button
+                type="button"
+                id="classic-step-plus"
+                onclick="stepCaesarKey(1)"
+                class="min-h-[46px] w-12 rounded-xl bg-slate-900 border border-white/15 text-cyan-300 font-bold text-lg flex items-center justify-center active:scale-90 transition"
+                title="Tambah Geseran"
+              >
+                +
+              </button>
+            </div>
           </div>
 
-          <!-- Tombol Enkripsi & Dekripsi -->
+          <!-- Tombol Enkripsi & Dekripsi (Thumb-friendly 48px+) -->
           <div class="grid grid-cols-2 gap-3 pt-1">
             <button
               type="button"
               onclick="processClassic('encrypt')"
-              class="group flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-sky-600 hover:from-cyan-400 hover:to-sky-500 text-slate-950 shadow-glow-cyan transition-all transform hover:-translate-y-0.5 active:scale-95"
+              class="min-h-[50px] group flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-extrabold text-sm bg-gradient-to-r from-cyan-400 to-sky-500 hover:from-cyan-300 hover:to-sky-400 text-slate-950 shadow-glow-cyan transition-all active:scale-95"
             >
-              <svg class="w-4 h-4 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
@@ -471,9 +505,9 @@
             <button
               type="button"
               onclick="processClassic('decrypt')"
-              class="group flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-white shadow-glow-indigo transition-all transform hover:-translate-y-0.5 active:scale-95"
+              class="min-h-[50px] group flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-extrabold text-sm bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-white shadow-glow-indigo transition-all active:scale-95"
             >
-              <svg class="w-4 h-4 transition-transform group-hover:-rotate-12" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 019.9-1" />
               </svg>
@@ -483,47 +517,47 @@
         </div>
 
         <!-- Right Column: Kolom Output Hasil -->
-        <div id="classic-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/70 border border-white/10 rounded-2xl p-5 transition-all">
+        <div id="classic-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/75 border border-white/10 rounded-2xl p-4 sm:p-5 transition-all">
           <div>
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-glow-cyan"></span>
-                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-semibold">Kolom Output Hasil</h3>
+                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Output Hasil</h3>
               </div>
-              <span id="classic-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400">
+              <span id="classic-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400 truncate max-w-[180px] sm:max-w-none">
                 Siap Memproses
               </span>
             </div>
 
             <textarea
               id="classic-output"
-              rows="8"
+              rows="6"
               readonly
               placeholder="Hasil enkripsi atau dekripsi Classic Cipher akan tampil di sini..."
-              class="w-full rounded-xl p-3.5 text-sm text-cyan-200 placeholder-slate-600 bg-slate-950/90 border border-white/5 font-mono resize-y focus:outline-none"
+              class="w-full rounded-xl p-3.5 text-cyan-200 placeholder-slate-600 bg-slate-950/90 border border-white/5 font-mono resize-y focus:outline-none glass-input"
             ></textarea>
           </div>
 
-          <!-- Output Action Bar -->
-          <div class="flex flex-wrap items-center justify-between gap-2.5 mt-4 pt-3 border-t border-white/10">
+          <!-- Output Action Bar (Full 2-col grid on mobile for easy tap) -->
+          <div class="grid grid-cols-2 gap-2.5 mt-4 pt-3 border-t border-white/10">
             <button
               type="button"
               onclick="useOutputAsInput('classic-output', 'classic-input', 'classic-char-count')"
-              class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-white/10 px-3.5 py-2.5 rounded-xl transition active:scale-95"
+              class="min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-bold text-slate-200 hover:text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-white/15 px-3 py-2.5 rounded-xl transition active:scale-95"
             >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
               </svg>
-              <span>Gunakan ke Input</span>
+              <span>Pindah ke Input</span>
             </button>
 
             <button
               type="button"
               id="btn-copy-classic"
               onclick="copyOutput('classic-output', 'btn-copy-classic')"
-              class="inline-flex items-center gap-2 text-xs font-bold text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/35 px-4 py-2.5 rounded-xl transition active:scale-95"
+              class="min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-extrabold text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/40 px-3 py-2.5 rounded-xl transition active:scale-95"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
               </svg>
@@ -537,80 +571,89 @@
     <!-- ========================================== -->
     <!-- TAB 2: AES ENCRYPTION (CRYPTOJS)           -->
     <!-- ========================================== -->
-    <section id="tab-panel-aes" class="hidden glass-panel rounded-2xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+    <section id="tab-panel-aes" class="hidden glass-panel rounded-2xl p-4 sm:p-8 shadow-2xl relative overflow-hidden">
       <div class="absolute -top-24 -right-24 w-60 h-60 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <!-- Tab Header -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
+      <div class="flex items-start sm:items-center justify-between gap-3 pb-4 sm:pb-5 mb-5 sm:mb-6 border-b border-white/10">
         <div>
           <div class="flex flex-wrap items-center gap-2">
-            <span class="px-2.5 py-1 text-[11px] font-mono font-semibold uppercase rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
-              Tab 2 // Symmetric Block Cipher
+            <span class="px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-semibold uppercase rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+              Tab 02 // Symmetric Block
             </span>
-            <h2 class="text-lg sm:text-2xl font-extrabold text-white">AES-256 Encryption Suite</h2>
+            <h2 class="text-base sm:text-2xl font-extrabold text-white">AES-256 Encryption Suite</h2>
           </div>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">
-            Enkripsi dan dekripsi modern menggunakan algoritma <strong class="text-indigo-300">Advanced Encryption Standard (AES)</strong> berbasis library <code class="text-cyan-300 font-mono">CryptoJS</code>.
+            Enkripsi dan dekripsi standar industri berbasis <strong class="text-indigo-300">AES-256</strong> (<code class="text-cyan-300 font-mono">CryptoJS</code>).
           </p>
         </div>
 
         <button
           type="button"
           onclick="clearAES()"
-          class="self-start sm:self-auto inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-rose-300 bg-slate-900/80 hover:bg-rose-950/40 border border-white/10 hover:border-rose-500/30 px-3.5 py-2 rounded-xl transition active:scale-95"
+          class="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-rose-300 bg-slate-900/90 hover:bg-rose-950/40 border border-white/15 px-3 py-2 rounded-xl transition active:scale-95"
         >
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
           </svg>
-          Bersihkan
+          <span>Reset</span>
         </button>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
         <!-- Left Column: Input & Passphrase -->
-        <div class="lg:col-span-6 space-y-5">
+        <div class="lg:col-span-6 space-y-4 sm:space-y-5">
           <!-- Kolom Input Teks AES -->
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="aes-input" class="block text-xs font-mono uppercase tracking-wider text-slate-300">
-                Kolom Input Teks (Plaintext / Ciphertext AES)
+                1. Input Teks / Ciphertext
               </label>
-              <span id="aes-char-count" class="text-[11px] font-mono text-indigo-400">0 karakter</span>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  onclick="pasteFromClipboard('aes-input', 'aes-char-count')"
+                  class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-md active:scale-95"
+                >
+                  Tempel
+                </button>
+                <span id="aes-char-count" class="text-[11px] font-mono text-indigo-400">0 kar</span>
+              </div>
             </div>
             <textarea
               id="aes-input"
-              rows="5"
+              rows="4"
               oninput="updateCharCount('aes-input', 'aes-char-count')"
               placeholder="Masukkan pesan rahasia atau Ciphertext Base64 (U2FsdGVkX1...) di sini..."
-              class="w-full rounded-xl p-3.5 text-sm text-slate-100 placeholder-slate-500 glass-input font-mono resize-y"
+              class="w-full rounded-xl p-3.5 text-slate-100 placeholder-slate-500 glass-input font-mono resize-y"
             ></textarea>
           </div>
 
           <!-- Kolom Secret Passphrase -->
           <div>
-            <div class="flex flex-wrap items-center justify-between gap-1 mb-2">
+            <div class="flex items-center justify-between gap-2 mb-2">
               <label for="aes-key" class="block text-xs font-mono uppercase tracking-wider text-indigo-300">
-                Kolom Secret Passphrase (Kunci Rahasia)
+                2. Secret Passphrase
               </label>
               <button
                 type="button"
                 onclick="generateRandomPassphrase()"
-                class="text-[11px] font-mono text-cyan-400 hover:text-cyan-200 underline underline-offset-4 transition"
+                class="text-[11px] font-mono font-semibold text-cyan-300 bg-cyan-500/10 border border-cyan-400/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
               >
-                + Buat Passphrase Acak
+                + Kunci Acak
               </button>
             </div>
             <div class="relative">
               <input
                 id="aes-key"
                 type="password"
-                placeholder="Masukkan Secret Passphrase rahasia Anda..."
-                class="w-full rounded-xl p-3.5 pr-12 text-sm text-slate-100 placeholder-slate-500 glass-input font-mono"
+                placeholder="Masukkan Kunci Rahasia (Passphrase)..."
+                class="w-full min-h-[46px] rounded-xl p-3.5 pr-12 text-slate-100 placeholder-slate-500 glass-input font-mono"
               />
               <button
                 type="button"
                 onclick="togglePasswordVisibility('aes-key', 'aes-eye-icon')"
-                class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-cyan-300 transition"
+                class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg flex items-center justify-center text-slate-400 hover:text-cyan-300 transition"
                 title="Lihat / Sembunyikan Passphrase"
               >
                 <svg id="aes-eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -626,9 +669,9 @@
             <button
               type="button"
               onclick="processAES('encrypt')"
-              class="group flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-sky-600 hover:from-cyan-400 hover:to-sky-500 text-slate-950 shadow-glow-cyan transition-all transform hover:-translate-y-0.5 active:scale-95"
+              class="min-h-[50px] group flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-extrabold text-sm bg-gradient-to-r from-cyan-400 to-sky-500 hover:from-cyan-300 hover:to-sky-400 text-slate-950 shadow-glow-cyan transition-all active:scale-95"
             >
-              <svg class="w-4 h-4 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
@@ -638,9 +681,9 @@
             <button
               type="button"
               onclick="processAES('decrypt')"
-              class="group flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-white shadow-glow-indigo transition-all transform hover:-translate-y-0.5 active:scale-95"
+              class="min-h-[50px] group flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-extrabold text-sm bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-white shadow-glow-indigo transition-all active:scale-95"
             >
-              <svg class="w-4 h-4 transition-transform group-hover:-rotate-12" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 019.9-1" />
               </svg>
@@ -650,12 +693,12 @@
         </div>
 
         <!-- Right Column: Kotak Hasil AES -->
-        <div id="aes-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/70 border border-white/10 rounded-2xl p-5 transition-all">
+        <div id="aes-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/75 border border-white/10 rounded-2xl p-4 sm:p-5 transition-all">
           <div>
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-glow-indigo"></span>
-                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-semibold">Kotak Hasil AES</h3>
+                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Kotak Hasil AES</h3>
               </div>
               <span id="aes-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400">
                 Siap Memproses
@@ -664,33 +707,33 @@
 
             <textarea
               id="aes-output"
-              rows="8"
+              rows="6"
               readonly
               placeholder="Hasil enkripsi Base64 atau hasil dekripsi UTF-8 AES akan ditampilkan di sini..."
-              class="w-full rounded-xl p-3.5 text-sm text-cyan-200 placeholder-slate-600 bg-slate-950/90 border border-white/5 font-mono resize-y focus:outline-none"
+              class="w-full rounded-xl p-3.5 text-cyan-200 placeholder-slate-600 bg-slate-950/90 border border-white/5 font-mono resize-y focus:outline-none glass-input"
             ></textarea>
           </div>
 
           <!-- Output Action Bar -->
-          <div class="flex flex-wrap items-center justify-between gap-2.5 mt-4 pt-3 border-t border-white/10">
+          <div class="grid grid-cols-2 gap-2.5 mt-4 pt-3 border-t border-white/10">
             <button
               type="button"
               onclick="useOutputAsInput('aes-output', 'aes-input', 'aes-char-count')"
-              class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-white/10 px-3.5 py-2.5 rounded-xl transition active:scale-95"
+              class="min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-bold text-slate-200 hover:text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-white/15 px-3 py-2.5 rounded-xl transition active:scale-95"
             >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
               </svg>
-              <span>Gunakan ke Input</span>
+              <span>Pindah ke Input</span>
             </button>
 
             <button
               type="button"
               id="btn-copy-aes"
               onclick="copyOutput('aes-output', 'btn-copy-aes')"
-              class="inline-flex items-center gap-2 text-xs font-bold text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/35 px-4 py-2.5 rounded-xl transition active:scale-95"
+              class="min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-extrabold text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/40 px-3 py-2.5 rounded-xl transition active:scale-95"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
               </svg>
@@ -704,41 +747,51 @@
     <!-- ========================================== -->
     <!-- TAB 3: RSA ENCRYPTION (ASYMMETRIC)         -->
     <!-- ========================================== -->
-    <section id="tab-panel-rsa" class="hidden glass-panel rounded-2xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+    <section id="tab-panel-rsa" class="hidden glass-panel rounded-2xl p-4 sm:p-8 shadow-2xl relative overflow-hidden">
       <div class="absolute -top-24 -right-24 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <!-- Tab Header -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
-        <div>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="px-2.5 py-1 text-[11px] font-mono font-semibold uppercase rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-              Tab 3 // Asymmetric Cryptography
-            </span>
-            <h2 class="text-lg sm:text-2xl font-extrabold text-white">RSA Public &amp; Private Key Suite</h2>
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3.5 pb-4 sm:pb-5 mb-5 border-b border-white/10">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-semibold uppercase rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                Tab 03 // Asymmetric Crypto
+              </span>
+              <h2 class="text-base sm:text-2xl font-extrabold text-white">RSA Public &amp; Private Key</h2>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">
+              Enkripsi pesan dengan <strong class="text-cyan-300">Public Key</strong> dan dekripsi dengan <strong class="text-indigo-300">Private Key</strong>.
+            </p>
           </div>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1">
-            Buat pasangan kunci otomatis, lalu enkripsi pesan dengan <strong class="text-cyan-300">Public Key</strong> dan dekripsi dengan <strong class="text-indigo-300">Private Key</strong>.
-          </p>
+
+          <button
+            type="button"
+            onclick="clearRSA()"
+            class="md:hidden shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-slate-300 bg-slate-900/90 border border-white/15 px-3 py-2 rounded-xl active:scale-95"
+          >
+            Reset
+          </button>
         </div>
 
-        <!-- Key Size & Generate Key Pair Button -->
-        <div class="flex flex-wrap items-center gap-2.5">
+        <!-- Key Size & Generate Key Pair Controls (Full width responsive on mobile) -->
+        <div class="grid grid-cols-12 sm:flex items-center gap-2">
           <select
             id="rsa-key-size"
-            class="rounded-xl px-3 py-2.5 text-xs font-mono text-slate-200 bg-slate-900 border border-white/15 focus:outline-none focus:border-cyan-400"
+            class="col-span-5 sm:w-auto min-h-[44px] rounded-xl px-3 py-2 text-xs font-mono text-slate-200 bg-slate-900 border border-white/15 focus:outline-none focus:border-cyan-400"
             title="Ukuran Bit Kunci RSA"
           >
-            <option value="1024" selected>1024-bit (Instan &amp; Cepat)</option>
-            <option value="2048">2048-bit (Keamanan Tinggi)</option>
+            <option value="1024" selected>1024-bit (Cepat)</option>
+            <option value="2048">2048-bit (Kuantum/Pro)</option>
           </select>
 
           <button
             type="button"
             id="btn-generate-rsa"
             onclick="generateRSAKeyPair()"
-            class="inline-flex items-center gap-2 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-glow-cyan transition transform hover:-translate-y-0.5 active:scale-95"
+            class="col-span-7 sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-cyan-400 to-indigo-600 hover:from-cyan-300 hover:to-indigo-500 text-white shadow-glow-cyan transition active:scale-95"
           >
-            <svg id="rsa-gen-spinner" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <svg id="rsa-gen-spinner" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
             <span id="rsa-gen-text">Generate Key Pair</span>
@@ -747,122 +800,145 @@
           <button
             type="button"
             onclick="clearRSA()"
-            class="inline-flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-rose-300 bg-slate-900/80 hover:bg-rose-950/40 border border-white/10 hover:border-rose-500/30 px-3 py-2.5 rounded-xl transition active:scale-95"
+            class="hidden md:inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-slate-300 hover:text-rose-300 bg-slate-900/90 border border-white/15 px-3.5 py-2 rounded-xl transition active:scale-95"
           >
             Reset
           </button>
         </div>
       </div>
 
+      <!-- Mobile-Friendly Collapsible Toggle for RSA Keys -->
+      <div class="mb-4 sm:hidden">
+        <button
+          type="button"
+          onclick="toggleMobileRSAKeys()"
+          class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-xs font-mono text-cyan-300"
+        >
+          <span id="mobile-rsa-key-status">Lihat / Edit Public &amp; Private Key</span>
+          <svg id="mobile-rsa-chevron" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
       <!-- Public Key & Private Key Columns -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
+      <div id="rsa-keys-container" class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-5 sm:mb-6">
         <!-- Public Key -->
-        <div class="bg-slate-950/60 border border-cyan-500/25 rounded-2xl p-4">
+        <div class="bg-slate-950/65 border border-cyan-500/25 rounded-2xl p-3.5 sm:p-4">
           <div class="flex items-center justify-between mb-2">
-            <label for="rsa-public-key" class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-300 font-semibold">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <label for="rsa-public-key" class="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-cyan-300 font-bold">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
               </svg>
-              Public Key (Untuk Enkripsi)
+              <span>Public Key (Enkripsi)</span>
             </label>
             <button
               type="button"
               id="btn-copy-pub"
               onclick="copyOutput('rsa-public-key', 'btn-copy-pub')"
-              class="text-[11px] font-mono text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded-lg transition"
+              class="text-[11px] font-mono font-semibold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
             >
-              Salin Public Key
+              Salin Key
             </button>
           </div>
           <textarea
             id="rsa-public-key"
-            rows="4"
-            placeholder="-----BEGIN PUBLIC KEY-----&#10;Klik tombol 'Generate Key Pair' di atas atau tempelkan Public Key Anda...&#10;-----END PUBLIC KEY-----"
-            class="w-full rounded-xl p-3 text-xs text-cyan-100 placeholder-slate-600 glass-input font-mono resize-y"
+            rows="3"
+            placeholder="Klik 'Generate Key Pair' di atas atau tempel Public Key..."
+            class="w-full rounded-xl p-2.5 text-xs text-cyan-100 placeholder-slate-600 glass-input font-mono resize-y"
           ></textarea>
         </div>
 
         <!-- Private Key -->
-        <div class="bg-slate-950/60 border border-indigo-500/25 rounded-2xl p-4">
+        <div class="bg-slate-950/65 border border-indigo-500/25 rounded-2xl p-3.5 sm:p-4">
           <div class="flex items-center justify-between mb-2">
-            <label for="rsa-private-key" class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-indigo-300 font-semibold">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <label for="rsa-private-key" class="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-indigo-300 font-bold">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
-              Private Key (Untuk Dekripsi)
+              <span>Private Key (Dekripsi)</span>
             </label>
             <button
               type="button"
               id="btn-copy-priv"
               onclick="copyOutput('rsa-private-key', 'btn-copy-priv')"
-              class="text-[11px] font-mono text-indigo-300 hover:text-white bg-indigo-500/15 hover:bg-indigo-500 border border-indigo-500/30 px-2.5 py-1 rounded-lg transition"
+              class="text-[11px] font-mono font-semibold text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
             >
-              Salin Private Key
+              Salin Key
             </button>
           </div>
           <textarea
             id="rsa-private-key"
-            rows="4"
-            placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;Klik tombol 'Generate Key Pair' di atas atau tempelkan Private Key Anda...&#10;-----END RSA PRIVATE KEY-----"
-            class="w-full rounded-xl p-3 text-xs text-indigo-100 placeholder-slate-600 glass-input font-mono resize-y"
+            rows="3"
+            placeholder="Klik 'Generate Key Pair' di atas atau tempel Private Key..."
+            class="w-full rounded-xl p-2.5 text-xs text-indigo-100 placeholder-slate-600 glass-input font-mono resize-y"
           ></textarea>
         </div>
       </div>
 
       <!-- Input Pesan & Output RSA -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
         <div class="lg:col-span-6 flex flex-col justify-between space-y-4">
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="rsa-input" class="block text-xs font-mono uppercase tracking-wider text-slate-300">
-                Input Pesan (Plaintext / Ciphertext RSA)
+                Input Pesan / Ciphertext RSA
               </label>
-              <span id="rsa-char-count" class="text-[11px] font-mono text-cyan-400">0 karakter</span>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  onclick="pasteFromClipboard('rsa-input', 'rsa-char-count')"
+                  class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-md active:scale-95"
+                >
+                  Tempel
+                </button>
+                <span id="rsa-char-count" class="text-[11px] font-mono text-cyan-400">0 kar</span>
+              </div>
             </div>
             <textarea
               id="rsa-input"
-              rows="6"
+              rows="4"
               oninput="updateCharCount('rsa-input', 'rsa-char-count')"
-              placeholder="Masukkan pesan untuk dienkripsi dengan Public Key, atau tempelkan Ciphertext Base64 untuk didekripsi dengan Private Key..."
-              class="w-full rounded-xl p-3.5 text-sm text-slate-100 placeholder-slate-500 glass-input font-mono resize-y"
+              placeholder="Ketik pesan rahasia atau tempel Ciphertext Base64 RSA di sini..."
+              class="w-full rounded-xl p-3.5 text-slate-100 placeholder-slate-500 glass-input font-mono resize-y"
             ></textarea>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="grid grid-cols-2 gap-3">
             <button
               type="button"
               onclick="processRSA('encrypt')"
-              class="group flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-sky-600 hover:from-cyan-400 hover:to-sky-500 text-slate-950 shadow-glow-cyan transition-all transform hover:-translate-y-0.5 active:scale-95"
+              class="min-h-[50px] group flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-cyan-400 to-sky-500 hover:from-cyan-300 hover:to-sky-400 text-slate-950 shadow-glow-cyan transition-all active:scale-95"
             >
-              <svg class="w-4 h-4 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
-              <span>Enkripsi (Public Key)</span>
+              <span>Enkripsi (Pub)</span>
             </button>
 
             <button
               type="button"
               onclick="processRSA('decrypt')"
-              class="group flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-white shadow-glow-indigo transition-all transform hover:-translate-y-0.5 active:scale-95"
+              class="min-h-[50px] group flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 text-white shadow-glow-indigo transition-all active:scale-95"
             >
-              <svg class="w-4 h-4 transition-transform group-hover:-rotate-12" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 019.9-1" />
               </svg>
-              <span>Dekripsi (Private Key)</span>
+              <span>Dekripsi (Priv)</span>
             </button>
           </div>
         </div>
 
         <!-- Output RSA -->
-        <div id="rsa-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/70 border border-white/10 rounded-2xl p-5 transition-all">
+        <div id="rsa-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/75 border border-white/10 rounded-2xl p-4 sm:p-5 transition-all">
           <div>
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-glow-cyan"></span>
-                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-semibold">Kotak Hasil RSA</h3>
+                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Kotak Hasil RSA</h3>
               </div>
               <span id="rsa-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400">
                 Siap Memproses
@@ -871,32 +947,32 @@
 
             <textarea
               id="rsa-output"
-              rows="6"
+              rows="5"
               readonly
               placeholder="Hasil enkripsi (Base64) atau dekripsi (Plaintext) RSA akan tampil di sini..."
-              class="w-full rounded-xl p-3.5 text-sm text-cyan-200 placeholder-slate-600 bg-slate-950/90 border border-white/5 font-mono resize-y focus:outline-none"
+              class="w-full rounded-xl p-3.5 text-cyan-200 placeholder-slate-600 bg-slate-950/90 border border-white/5 font-mono resize-y focus:outline-none glass-input"
             ></textarea>
           </div>
 
-          <div class="flex flex-wrap items-center justify-between gap-2.5 mt-4 pt-3 border-t border-white/10">
+          <div class="grid grid-cols-2 gap-2.5 mt-4 pt-3 border-t border-white/10">
             <button
               type="button"
               onclick="useOutputAsInput('rsa-output', 'rsa-input', 'rsa-char-count')"
-              class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-white/10 px-3.5 py-2.5 rounded-xl transition active:scale-95"
+              class="min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-bold text-slate-200 hover:text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-white/15 px-3 py-2.5 rounded-xl transition active:scale-95"
             >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
               </svg>
-              <span>Gunakan ke Input</span>
+              <span>Pindah ke Input</span>
             </button>
 
             <button
               type="button"
               id="btn-copy-rsa"
               onclick="copyOutput('rsa-output', 'btn-copy-rsa')"
-              class="inline-flex items-center gap-2 text-xs font-bold text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/35 px-4 py-2.5 rounded-xl transition active:scale-95"
+              class="min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-extrabold text-cyan-300 hover:text-slate-950 bg-cyan-500/15 hover:bg-cyan-400 border border-cyan-500/40 px-3 py-2.5 rounded-xl transition active:scale-95"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
               </svg>
@@ -910,20 +986,20 @@
     <!-- ========================================== -->
     <!-- INFO CARDS: RINGKASAN ALGORITMA            -->
     <!-- ========================================== -->
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-      <div class="glass-panel glass-panel-interactive rounded-xl p-4 border-l-2 border-l-cyan-400">
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 mt-6 sm:mt-8">
+      <div class="glass-panel rounded-xl p-4 border-l-2 border-l-cyan-400">
         <h4 class="text-xs font-mono uppercase tracking-wider text-cyan-300 font-bold">01 // Classic Cipher</h4>
         <p class="text-xs text-slate-400 mt-1 leading-relaxed">
           Substitusi huruf klasik. <strong class="text-slate-200">Caesar</strong> menggeser alfabet sejauh angka kunci, sedangkan <strong class="text-slate-200">Vigenère</strong> memakai kata kunci berulang.
         </p>
       </div>
-      <div class="glass-panel glass-panel-interactive rounded-xl p-4 border-l-2 border-l-indigo-400">
+      <div class="glass-panel rounded-xl p-4 border-l-2 border-l-indigo-400">
         <h4 class="text-xs font-mono uppercase tracking-wider text-indigo-300 font-bold">02 // AES-256 Standard</h4>
         <p class="text-xs text-slate-400 mt-1 leading-relaxed">
           Kriptografi simetris modern berbasis blok. Membutuhkan <strong class="text-slate-200">Secret Passphrase</strong> yang persis sama untuk mengenkripsi dan mendekripsi.
         </p>
       </div>
-      <div class="glass-panel glass-panel-interactive rounded-xl p-4 border-l-2 border-l-sky-400">
+      <div class="glass-panel rounded-xl p-4 border-l-2 border-l-sky-400">
         <h4 class="text-xs font-mono uppercase tracking-wider text-sky-300 font-bold">03 // RSA Asymmetric</h4>
         <p class="text-xs text-slate-400 mt-1 leading-relaxed">
           Kriptografi asimetris dua kunci. Enkripsi dilakukan dengan <strong class="text-slate-200">Public Key</strong> dan dekripsi wajib memakai <strong class="text-slate-200">Private Key</strong>.
@@ -933,6 +1009,65 @@
   </main>
 
   <!-- ========================================== -->
+  <!-- MOBILE STICKY BOTTOM NAVIGATION BAR        -->
+  <!-- (Makes 1-handed mobile operation effortless) -->
+  <!-- ========================================== -->
+  <nav
+    aria-label="Mobile Bottom Navigation"
+    class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/90 backdrop-blur-2xl border-t border-cyan-500/25 px-2 py-1.5"
+  >
+    <div class="grid grid-cols-4 gap-1 max-w-md mx-auto">
+      <button
+        type="button"
+        id="mnav-classic"
+        onclick="switchTab('classic')"
+        class="flex flex-col items-center justify-center py-1.5 rounded-xl text-cyan-300 bg-cyan-500/15 border border-cyan-400/30 transition active:scale-95"
+      >
+        <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7V4h16v3M9 20h6M12 4v16" />
+        </svg>
+        <span class="text-[10px] font-bold">Classic</span>
+      </button>
+
+      <button
+        type="button"
+        id="mnav-aes"
+        onclick="switchTab('aes')"
+        class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400 border border-transparent transition active:scale-95"
+      >
+        <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        <span class="text-[10px] font-bold">AES-256</span>
+      </button>
+
+      <button
+        type="button"
+        id="mnav-rsa"
+        onclick="switchTab('rsa')"
+        class="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400 border border-transparent transition active:scale-95"
+      >
+        <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+        </svg>
+        <span class="text-[10px] font-bold">RSA Key</span>
+      </button>
+
+      <button
+        type="button"
+        onclick="toggleIdentityModal()"
+        class="flex flex-col items-center justify-center py-1.5 rounded-xl text-indigo-300 border border-transparent transition active:scale-95"
+      >
+        <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-[10px] font-bold">Ayunda</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
   <!-- MODAL IDENTITAS TUGAS AYUNDA               -->
   <!-- ========================================== -->
   <div
@@ -940,11 +1075,11 @@
     class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
     onclick="if(event.target === this) toggleIdentityModal()"
   >
-    <div class="glass-panel rounded-2xl max-w-md w-full p-6 border border-cyan-400/40 shadow-glow-cyan relative tab-panel-enter">
+    <div class="glass-panel rounded-2xl max-w-md w-full p-5 sm:p-6 border border-cyan-400/40 shadow-glow-cyan relative tab-panel-enter">
       <button
         type="button"
         onclick="toggleIdentityModal()"
-        class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900/80 p-1.5 rounded-lg border border-white/10"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900/80 p-2 rounded-xl border border-white/10"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -952,7 +1087,7 @@
       </button>
 
       <div class="flex items-center gap-3.5 mb-5">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-indigo-600 p-0.5 shadow-glow-cyan flex items-center justify-center">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-indigo-600 p-0.5 shadow-glow-cyan flex items-center justify-center shrink-0">
           <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
             <span class="text-2xl font-extrabold text-cyan-300">AY</span>
           </div>
@@ -966,7 +1101,7 @@
         </div>
       </div>
 
-      <div class="space-y-2.5 text-xs font-mono bg-slate-950/80 border border-white/10 rounded-xl p-4">
+      <div class="space-y-2.5 text-xs font-mono bg-slate-950/85 border border-white/10 rounded-xl p-4">
         <div class="flex justify-between py-1 border-b border-white/5">
           <span class="text-slate-400">Nama Lengkap:</span>
           <span class="text-cyan-300 font-bold">Ayunda</span>
@@ -980,8 +1115,8 @@
           <span class="text-indigo-300">Caesar, Vigenère, AES, RSA</span>
         </div>
         <div class="flex justify-between py-1 border-b border-white/5">
-          <span class="text-slate-400">Teknologi:</span>
-          <span class="text-slate-200">HTML5, Tailwind, Vanilla JS</span>
+          <span class="text-slate-400">UI / UX:</span>
+          <span class="text-slate-200">Mobile-First Glassmorphism</span>
         </div>
         <div class="flex justify-between py-1">
           <span class="text-slate-400">Audio Engine:</span>
@@ -992,7 +1127,7 @@
       <button
         type="button"
         onclick="toggleIdentityModal()"
-        class="w-full mt-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-indigo-600 text-slate-950 hover:opacity-95 transition"
+        class="w-full min-h-[46px] mt-5 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 active:scale-95 transition"
       >
         Tutup Kartu Identitas
       </button>
@@ -1002,12 +1137,12 @@
   <!-- ========================================== -->
   <!-- FOOTER                                     -->
   <!-- ========================================== -->
-  <footer class="border-t border-white/10 bg-slate-950/80 py-5 mt-10">
+  <footer class="border-t border-white/10 bg-slate-950/80 py-5 mt-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400 text-center sm:text-left">
       <p>
-        &copy; 2026 <strong class="text-cyan-300">CryptoWeb Suite</strong> — Disusun oleh <strong class="text-white underline decoration-cyan-400 underline-offset-4">Ayunda</strong> (Tugas Pemrograman Web &amp; Keamanan Siber).
+        &copy; 2026 <strong class="text-cyan-300">CryptoWeb Suite</strong> — Disusun oleh <strong class="text-white underline decoration-cyan-400 underline-offset-4">Ayunda</strong>.
       </p>
-      <p class="font-mono text-[11px] text-slate-500">100% Client-Side &bull; Responsive Desktop &amp; Mobile</p>
+      <p class="font-mono text-[11px] text-slate-500">100% Client-Side &bull; Optimized for Mobile &amp; Desktop</p>
     </div>
   </footer>
 
@@ -1017,7 +1152,6 @@
   <script>
     /* ----------------------------------------------------
      * 1. WEB AUDIO API CYBER SOUND EFFECTS SYNTHESIZER
-     *    (Tanpa file MP3 eksternal - 100% jalan di semua browser)
      * ---------------------------------------------------- */
     let soundEnabled = true;
     let audioCtx = null;
@@ -1058,7 +1192,7 @@
         osc.start(startTime);
         osc.stop(startTime + duration + 0.02);
       } catch (e) {
-        // Ignore audio errors if blocked by browser autoplay policy
+        // Ignore if blocked by browser autoplay policy
       }
     }
 
@@ -1071,24 +1205,21 @@
           playTone(780, 'triangle', 0.09, 0.04, 0.05);
           break;
         case 'switch':
-          playTone(660, 'sine', 0.06, 0, 0.05);
+          playTone(660, 'sine', 0.05, 0, 0.05);
           break;
         case 'encrypt':
-          // Futuristic ascending cyber-lock arpeggio
           playTone(440, 'triangle', 0.09, 0, 0.07);
           playTone(554.37, 'triangle', 0.09, 0.06, 0.07);
           playTone(659.25, 'triangle', 0.09, 0.12, 0.07);
           playTone(880, 'sine', 0.18, 0.18, 0.09);
           break;
         case 'decrypt':
-          // Harmonic cyber-unlock chord reveal
           playTone(783.99, 'sine', 0.08, 0, 0.07);
           playTone(659.25, 'triangle', 0.08, 0.06, 0.07);
           playTone(523.25, 'triangle', 0.1, 0.12, 0.07);
           playTone(1046.5, 'sine', 0.2, 0.18, 0.08);
           break;
         case 'keygen':
-          // Sci-fi computing telemetry sequence
           playTone(600, 'sawtooth', 0.05, 0, 0.04);
           playTone(820, 'sawtooth', 0.05, 0.05, 0.04);
           playTone(710, 'sawtooth', 0.05, 0.10, 0.04);
@@ -1111,21 +1242,21 @@
       const txt = document.getElementById('sound-status-text');
 
       if (soundEnabled) {
-        btn.classList.add('sound-active', 'border-cyan-500/30', 'text-cyan-300');
+        btn.classList.add('sound-active', 'border-cyan-500/35', 'text-cyan-300');
         btn.classList.remove('border-white/10', 'text-slate-500');
-        txt.textContent = 'SFX: ON';
+        txt.textContent = 'SFX';
         playSound('copy');
-        showToast('Efek Suara Cyber (SFX) Diaktifkan!', 'info');
+        showToast('Efek Suara Cyber (SFX) Aktif!', 'info');
       } else {
-        btn.classList.remove('sound-active', 'border-cyan-500/30', 'text-cyan-300');
+        btn.classList.remove('sound-active', 'border-cyan-500/35', 'text-cyan-300');
         btn.classList.add('border-white/10', 'text-slate-500');
-        txt.textContent = 'SFX: OFF';
+        txt.textContent = 'MUTE';
         showToast('Efek Suara (SFX) Dimatikan.', 'info');
       }
     }
 
     /* ----------------------------------------------------
-     * 2. SISTEM TAB INTERAKTIF & ANIMASI OUTPUT
+     * 2. SISTEM TAB INTERAKTIF (TOP & MOBILE BOTTOM NAV)
      * ---------------------------------------------------- */
     let activeTab = 'classic';
 
@@ -1137,25 +1268,47 @@
       tabs.forEach((t) => {
         const panel = document.getElementById(`tab-panel-${t}`);
         const btn = document.getElementById(`tab-btn-${t}`);
+        const mnav = document.getElementById(`mnav-${t}`);
 
         if (t === tabName) {
           panel.classList.remove('hidden', 'tab-panel-enter');
-          void panel.offsetWidth; // trigger reflow for smooth animation replay
+          void panel.offsetWidth;
           panel.classList.add('tab-panel-enter');
 
           btn.setAttribute('aria-selected', 'true');
           btn.className =
-            'tab-btn group flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 bg-gradient-to-r from-cyan-500/25 to-indigo-500/25 text-cyan-200 border border-cyan-400/50 shadow-glow-cyan';
+            'tab-btn group flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 bg-gradient-to-r from-cyan-500/25 to-indigo-500/25 text-cyan-200 border border-cyan-400/50 shadow-glow-cyan active:scale-95';
+
+          if (mnav) {
+            mnav.className =
+              'flex flex-col items-center justify-center py-1.5 rounded-xl text-cyan-300 bg-cyan-500/15 border border-cyan-400/35 transition active:scale-95';
+          }
         } else {
           panel.classList.add('hidden');
           btn.setAttribute('aria-selected', 'false');
           btn.className =
-            'tab-btn group flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent';
+            'tab-btn group flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent active:scale-95';
+
+          if (mnav) {
+            mnav.className =
+              'flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400 border border-transparent transition active:scale-95';
+          }
         }
       });
     }
 
-    // Efek Matrix / Cyber Scramble saat menampilkan hasil output
+    // Smoothly scroll to output card on mobile screens so the user immediately sees the result
+    function scrollOutputIntoViewOnMobile(cardId) {
+      if (window.innerWidth < 1024) {
+        const card = document.getElementById(cardId);
+        if (card) {
+          setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 80);
+        }
+      }
+    }
+
     function animateCyberOutput(elementId, cardId, finalText) {
       const el = document.getElementById(elementId);
       const card = document.getElementById(cardId);
@@ -1165,6 +1318,8 @@
         void card.offsetWidth;
         card.classList.add('output-flash');
       }
+
+      scrollOutputIntoViewOnMobile(cardId);
 
       if (finalText.length > 260) {
         el.value = finalText;
@@ -1205,6 +1360,24 @@
       }
     }
 
+    async function pasteFromClipboard(targetId, countId) {
+      try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            document.getElementById(targetId).value = text;
+            updateCharCount(targetId, countId);
+            playSound('switch');
+            showToast('Teks berhasil ditempel dari Clipboard!', 'info');
+            return;
+          }
+        }
+        showToast('Silakan tempel manual atau gunakan tombol Isi Contoh.', 'info');
+      } catch (e) {
+        showToast('Izin tempel otomatis ditolak browser, silakan tempel manual.', 'info');
+      }
+    }
+
     function fillDemoSample() {
       playSound('keygen');
       if (activeTab === 'classic') {
@@ -1212,7 +1385,7 @@
         document.getElementById('classic-input').value = 'Halo! Ini Tugas Web Kriptografi Ayunda 2026.';
         document.getElementById('classic-key').value = mode === 'caesar' ? '5' : 'AYUNDA';
         updateCharCount('classic-input', 'classic-char-count');
-        showToast('Contoh data Classic Cipher (Ayunda) berhasil diisi!', 'info');
+        showToast('Contoh Classic Cipher (Ayunda) siap diuji!', 'info');
       } else if (activeTab === 'aes') {
         document.getElementById('aes-input').value = 'Dokumen Rahasia Ayunda: Kode Akses Server #AY-2026';
         document.getElementById('aes-key').value = 'AyundaCyberKey#2026';
@@ -1231,7 +1404,7 @@
 
     function updateCharCount(inputId, countId) {
       const val = document.getElementById(inputId).value;
-      document.getElementById(countId).textContent = `${val.length} karakter`;
+      document.getElementById(countId).textContent = `${val.length} kar`;
     }
 
     function showToast(message, type = 'info') {
@@ -1250,15 +1423,16 @@
         info: `<svg class="w-5 h-5 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
       };
 
-      toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl text-xs sm:text-sm font-medium transition-all duration-300 transform translate-y-0 opacity-100 ${styles[type] || styles.info}`;
+      toast.className = `pointer-events-auto flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border backdrop-blur-xl text-xs sm:text-sm font-semibold transition-all duration-300 transform translate-y-0 opacity-100 ${styles[type] || styles.info}`;
       toast.innerHTML = `${icons[type] || icons.info}<span class="leading-snug">${message}</span>`;
 
+      container.innerHTML = '';
       container.appendChild(toast);
 
       setTimeout(() => {
-        toast.classList.add('opacity-0', 'translate-x-4');
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
+        toast.classList.add('opacity-0', '-translate-y-2');
+        setTimeout(() => toast.remove(), 280);
+      }, 2600);
     }
 
     function updateBadge(badgeId, text, variant) {
@@ -1269,7 +1443,7 @@
         error: 'bg-rose-500/20 text-rose-300 border border-rose-400/40',
         idle: 'bg-slate-800 text-slate-400',
       };
-      badge.className = `text-[11px] font-mono px-2.5 py-0.5 rounded-md ${variants[variant] || variants.idle}`;
+      badge.className = `text-[11px] font-mono px-2.5 py-0.5 rounded-md truncate max-w-[180px] sm:max-w-none ${variants[variant] || variants.idle}`;
       badge.textContent = text;
     }
 
@@ -1281,9 +1455,13 @@
         return;
       }
       playSound('switch');
-      document.getElementById(inputId).value = outputVal;
+      const inputEl = document.getElementById(inputId);
+      inputEl.value = outputVal;
       updateCharCount(inputId, charCountId);
-      showToast('Hasil dipindahkan ke kolom Input untuk siap didekripsi!', 'info');
+      if (window.innerWidth < 1024) {
+        inputEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      showToast('Hasil dipindahkan ke Input! Klik Dekripsi sekarang.', 'info');
     }
 
     async function copyOutput(elementId, buttonId) {
@@ -1312,13 +1490,13 @@
         const originalClass = btn.className;
 
         btn.innerHTML = `
-          <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 inline-block mr-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
           </svg>
           <span>Tersalin!</span>
         `;
         btn.className =
-          'inline-flex items-center gap-1.5 text-xs font-bold text-slate-950 bg-emerald-400 border border-emerald-300 px-4 py-2 rounded-xl transition shadow-glow-emerald';
+          'min-h-[46px] inline-flex items-center justify-center gap-1.5 text-xs font-extrabold text-slate-950 bg-emerald-400 border border-emerald-300 px-3 py-2.5 rounded-xl transition shadow-glow-emerald';
 
         showToast('Berhasil disalin ke Clipboard!', 'success');
 
@@ -1335,6 +1513,16 @@
     /* ----------------------------------------------------
      * 3. TAB 1: CLASSIC CIPHER (CAESAR & VIGENERE)
      * ---------------------------------------------------- */
+    function stepCaesarKey(delta) {
+      const mode = document.getElementById('classic-type').value;
+      if (mode !== 'caesar') return;
+      playSound('switch');
+      const keyInput = document.getElementById('classic-key');
+      let current = parseInt(keyInput.value, 10) || 0;
+      current = ((current + delta - 1 + 25) % 25) + 1;
+      keyInput.value = current;
+    }
+
     function setClassicMode(mode) {
       playSound('switch');
       const hiddenType = document.getElementById('classic-type');
@@ -1343,31 +1531,37 @@
       const keyInput = document.getElementById('classic-key');
       const keyLabel = document.getElementById('classic-key-label');
       const keyHint = document.getElementById('classic-key-hint');
+      const stepMinus = document.getElementById('classic-step-minus');
+      const stepPlus = document.getElementById('classic-step-plus');
 
       hiddenType.value = mode;
 
       if (mode === 'caesar') {
         btnCaesar.className =
-          'flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-cyan-500/20 text-cyan-200 border-cyan-400/60 shadow-glow-cyan';
+          'min-h-[46px] flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-cyan-500/20 text-cyan-200 border-cyan-400/60 shadow-glow-cyan active:scale-95';
         btnVigenere.className =
-          'flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-slate-900/70 text-slate-400 border-white/10 hover:text-slate-200';
+          'min-h-[46px] flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-slate-900/75 text-slate-400 border-white/10 hover:text-slate-200 active:scale-95';
 
-        keyLabel.textContent = 'Kolom Key (Geseran Angka Caesar)';
-        keyHint.textContent = 'Geseran: 1 - 25';
+        keyLabel.textContent = '3. Shift Key (Geseran Angka)';
+        keyHint.textContent = 'Angka 1 - 25';
         keyInput.type = 'number';
         keyInput.value = '3';
         keyInput.placeholder = 'Masukkan angka geseran (contoh: 3)';
+        stepMinus.classList.remove('hidden');
+        stepPlus.classList.remove('hidden');
       } else {
         btnVigenere.className =
-          'flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-indigo-500/20 text-indigo-200 border-indigo-400/60 shadow-glow-indigo';
+          'min-h-[46px] flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-indigo-500/20 text-indigo-200 border-indigo-400/60 shadow-glow-indigo active:scale-95';
         btnCaesar.className =
-          'flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-slate-900/70 text-slate-400 border-white/10 hover:text-slate-200';
+          'min-h-[46px] flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 bg-slate-900/75 text-slate-400 border-white/10 hover:text-slate-200 active:scale-95';
 
-        keyLabel.textContent = 'Kolom Key (Kata Kunci Teks Vigenère)';
+        keyLabel.textContent = '3. Keyword (Kata Kunci Vigenère)';
         keyHint.textContent = 'Huruf A-Z (contoh: AYUNDA)';
         keyInput.type = 'text';
         keyInput.value = 'AYUNDA';
         keyInput.placeholder = 'Masukkan kata kunci teks (contoh: AYUNDA)';
+        stepMinus.classList.add('hidden');
+        stepPlus.classList.add('hidden');
       }
     }
 
@@ -1431,10 +1625,10 @@
         animateCyberOutput('classic-output', 'classic-output-card', result);
         updateBadge(
           'classic-badge',
-          `Caesar ${isDecrypt ? 'Decrypted' : 'Encrypted'} (Shift: ${shift})`,
+          `Caesar ${isDecrypt ? 'Decrypted' : 'Encrypted'} (${shift})`,
           isDecrypt ? 'decrypt' : 'encrypt'
         );
-        showToast(`Berhasil ${isDecrypt ? 'mendekripsi' : 'mengenkripsi'} dengan Caesar Cipher!`, 'success');
+        showToast(`Berhasil ${isDecrypt ? 'Dekripsi' : 'Enkripsi'} Caesar Cipher!`, 'success');
       } else {
         const cleanKey = rawKey.replace(/[^a-zA-Z]/g, '');
         if (!cleanKey.length) {
@@ -1448,10 +1642,10 @@
         animateCyberOutput('classic-output', 'classic-output-card', result);
         updateBadge(
           'classic-badge',
-          `Vigenère ${isDecrypt ? 'Decrypted' : 'Encrypted'} (Key: ${cleanKey.toUpperCase()})`,
+          `Vigenère ${isDecrypt ? 'Decrypted' : 'Encrypted'} (${cleanKey.toUpperCase()})`,
           isDecrypt ? 'decrypt' : 'encrypt'
         );
-        showToast(`Berhasil ${isDecrypt ? 'mendekripsi' : 'mengenkripsi'} dengan Vigenère Cipher!`, 'success');
+        showToast(`Berhasil ${isDecrypt ? 'Dekripsi' : 'Enkripsi'} Vigenère Cipher!`, 'success');
       }
     }
 
@@ -1461,7 +1655,7 @@
       document.getElementById('classic-output').value = '';
       updateCharCount('classic-input', 'classic-char-count');
       updateBadge('classic-badge', 'Siap Memproses', 'idle');
-      showToast('Kolom Classic Cipher telah dibersihkan.', 'info');
+      showToast('Kolom Classic Cipher telah direset.', 'info');
     }
 
     /* ----------------------------------------------------
@@ -1488,7 +1682,7 @@
     function generateRandomPassphrase() {
       playSound('keygen');
       const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*';
-      const randomValues = new Uint32Array(18);
+      const randomValues = new Uint32Array(16);
       window.crypto.getRandomValues(randomValues);
       let pass = 'Ayunda_';
       for (let i = 0; i < randomValues.length; i++) {
@@ -1497,7 +1691,7 @@
       const keyInput = document.getElementById('aes-key');
       keyInput.value = pass;
       keyInput.type = 'text';
-      showToast('Secret Passphrase kuat berhasil dibuat!', 'info');
+      showToast('Passphrase kuat berhasil dibuat!', 'info');
     }
 
     function processAES(action) {
@@ -1520,7 +1714,7 @@
 
       if (!passphrase || !passphrase.trim()) {
         playSound('error');
-        showToast('Kolom Secret Passphrase (Kunci Rahasia) wajib diisi!', 'error');
+        showToast('Kolom Secret Passphrase wajib diisi!', 'error');
         updateBadge('aes-badge', 'Passphrase Kosong', 'error');
         return;
       }
@@ -1531,7 +1725,7 @@
           playSound('encrypt');
           animateCyberOutput('aes-output', 'aes-output-card', encrypted);
           updateBadge('aes-badge', 'AES-256 Encrypted', 'encrypt');
-          showToast('Pesan berhasil dienkripsi dengan AES-256!', 'success');
+          showToast('Berhasil dienkripsi dengan AES-256!', 'success');
         } else {
           const decryptedBytes = CryptoJS.AES.decrypt(inputText, passphrase);
           const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);
@@ -1553,7 +1747,7 @@
         playSound('error');
         outputEl.value = '';
         updateBadge('aes-badge', 'Error AES', 'error');
-        showToast('Gagal memproses data AES. Pastikan Ciphertext dan Passphrase sesuai.', 'error');
+        showToast('Gagal memproses data AES. Pastikan Ciphertext & Passphrase sesuai.', 'error');
       }
     }
 
@@ -1564,12 +1758,27 @@
       document.getElementById('aes-output').value = '';
       updateCharCount('aes-input', 'aes-char-count');
       updateBadge('aes-badge', 'Siap Memproses', 'idle');
-      showToast('Kolom AES Encryption telah dibersihkan.', 'info');
+      showToast('Kolom AES Encryption telah direset.', 'info');
     }
 
     /* ----------------------------------------------------
      * 5. TAB 3: RSA ENCRYPTION (JSENCRYPT)
      * ---------------------------------------------------- */
+    function toggleMobileRSAKeys() {
+      playSound('switch');
+      const container = document.getElementById('rsa-keys-container');
+      const chevron = document.getElementById('mobile-rsa-chevron');
+      if (container.classList.contains('hidden')) {
+        container.classList.remove('hidden');
+        container.classList.add('grid');
+        chevron.classList.remove('rotate-180');
+      } else {
+        container.classList.add('hidden');
+        container.classList.remove('grid');
+        chevron.classList.add('rotate-180');
+      }
+    }
+
     function generateRSAKeyPair() {
       if (typeof JSEncrypt === 'undefined') {
         playSound('error');
@@ -1583,7 +1792,7 @@
       const spinner = document.getElementById('rsa-gen-spinner');
 
       btn.disabled = true;
-      genText.textContent = `Generating ${keySize}-bit...`;
+      genText.textContent = `Generating...`;
       spinner.classList.add('animate-spin');
       playSound('keygen');
 
@@ -1601,9 +1810,14 @@
             genText.textContent = 'Generate Key Pair';
             spinner.classList.remove('animate-spin');
 
+            const mobileStatus = document.getElementById('mobile-rsa-key-status');
+            if (mobileStatus) {
+              mobileStatus.innerHTML = `<span class="text-emerald-400 font-bold">&#10003; Key Pair (${keySize}-bit) Siap!</span> (Tap untuk lihat/sembunyikan)`;
+            }
+
             playSound('encrypt');
             updateBadge('rsa-badge', `Key Pair ${keySize}-bit Aktif`, 'encrypt');
-            showToast(`Public Key & Private Key RSA (${keySize}-bit) berhasil dibuat!`, 'success');
+            showToast(`Public & Private Key RSA (${keySize}-bit) siap digunakan!`, 'success');
           });
         } catch (error) {
           btn.disabled = false;
@@ -1637,7 +1851,7 @@
       if (action === 'encrypt') {
         if (!publicKey) {
           playSound('error');
-          showToast('Public Key masih kosong! Klik tombol "Generate Key Pair" terlebih dahulu.', 'error');
+          showToast('Public Key kosong! Klik "Generate Key Pair" terlebih dahulu.', 'error');
           updateBadge('rsa-badge', 'Public Key Kosong', 'error');
           return;
         }
@@ -1651,14 +1865,14 @@
             playSound('error');
             outputEl.value = '';
             updateBadge('rsa-badge', 'Enkripsi Gagal', 'error');
-            showToast('Enkripsi gagal! Pastikan Public Key valid dan pesan tidak terlalu panjang.', 'error');
+            showToast('Enkripsi gagal! Pastikan Public Key valid & pesan tidak terlalu panjang.', 'error');
             return;
           }
 
           playSound('encrypt');
           animateCyberOutput('rsa-output', 'rsa-output-card', encrypted);
-          updateBadge('rsa-badge', 'RSA Encrypted (Public Key)', 'encrypt');
-          showToast('Pesan berhasil dienkripsi menggunakan Public Key!', 'success');
+          updateBadge('rsa-badge', 'RSA Encrypted (Pub)', 'encrypt');
+          showToast('Berhasil dienkripsi dengan Public Key!', 'success');
         } catch (err) {
           playSound('error');
           outputEl.value = '';
@@ -1688,8 +1902,8 @@
 
           playSound('decrypt');
           animateCyberOutput('rsa-output', 'rsa-output-card', decrypted);
-          updateBadge('rsa-badge', 'RSA Decrypted (Private Key)', 'decrypt');
-          showToast('Ciphertext berhasil didekripsi menggunakan Private Key!', 'success');
+          updateBadge('rsa-badge', 'RSA Decrypted (Priv)', 'decrypt');
+          showToast('Ciphertext berhasil didekripsi dengan Private Key!', 'success');
         } catch (err) {
           playSound('error');
           outputEl.value = '';
@@ -1707,7 +1921,11 @@
       document.getElementById('rsa-output').value = '';
       updateCharCount('rsa-input', 'rsa-char-count');
       updateBadge('rsa-badge', 'Siap Memproses', 'idle');
-      showToast('Seluruh kolom RSA telah dibersihkan.', 'info');
+      const mobileStatus = document.getElementById('mobile-rsa-key-status');
+      if (mobileStatus) {
+        mobileStatus.textContent = 'Lihat / Edit Public & Private Key';
+      }
+      showToast('Seluruh kolom RSA telah direset.', 'info');
     }
   </script>
 </body>
