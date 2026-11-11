@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta name="theme-color" content="#020617" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="CryptoWeb Ayunda" />
+  <meta name="application-name" content="CryptoWeb Ayunda" />
+  <meta name="description" content="CryptoWeb Suite - Aplikasi Web Kriptografi & Keamanan Siber oleh Ayunda (Caesar, Vigenère, AES-256, RSA)" />
   <title>CryptoWeb Suite — Tugas Web Ayunda | Cybersecurity Cryptography Dashboard</title>
 
   <!-- Tailwind CSS via CDN -->
@@ -519,14 +524,34 @@
         <!-- Right Column: Kolom Output Hasil -->
         <div id="classic-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/75 border border-white/10 rounded-2xl p-4 sm:p-5 transition-all">
           <div>
-            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-glow-cyan"></span>
                 <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Output Hasil</h3>
+                <span id="classic-badge" class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-800 text-slate-400">
+                  Siap Memproses
+                </span>
               </div>
-              <span id="classic-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400 truncate max-w-[180px] sm:max-w-none">
-                Siap Memproses
-              </span>
+              <div class="flex items-center gap-1.5 ml-auto">
+                <button
+                  type="button"
+                  onclick="downloadResult('classic-output', 'classic_result.txt')"
+                  class="text-[11px] font-mono font-semibold text-slate-300 hover:text-cyan-300 bg-slate-900 border border-white/15 px-2.5 py-1 rounded-lg transition active:scale-95 flex items-center gap-1 shadow-sm"
+                  title="Unduh Teks Hasil (.txt)"
+                >
+                  <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  <span>Unduh</span>
+                </button>
+                <button
+                  type="button"
+                  onclick="shareResult('classic-output', 'Classic Cipher - Ayunda')"
+                  class="text-[11px] font-mono font-semibold text-cyan-300 bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 rounded-lg transition active:scale-95 flex items-center gap-1 shadow-sm"
+                  title="Bagikan Hasil"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                  <span>Bagikan</span>
+                </button>
+              </div>
             </div>
 
             <textarea
@@ -647,6 +672,7 @@
               <input
                 id="aes-key"
                 type="password"
+                oninput="evaluatePassphraseStrength()"
                 placeholder="Masukkan Kunci Rahasia (Passphrase)..."
                 class="w-full min-h-[46px] rounded-xl p-3.5 pr-12 text-slate-100 placeholder-slate-500 glass-input font-mono"
               />
@@ -661,6 +687,16 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </button>
+            </div>
+            <!-- Real-time Passphrase Strength & Entropy Meter -->
+            <div class="mt-2 space-y-1">
+              <div class="flex justify-between items-center text-[10px] font-mono">
+                <span class="text-slate-400">Tingkat Keamanan Passphrase:</span>
+                <span id="aes-strength-text" class="text-slate-500 font-semibold">Belum Diisi</span>
+              </div>
+              <div class="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/10">
+                <div id="aes-strength-bar" class="h-full w-0 transition-all duration-300 rounded-full bg-slate-700"></div>
+              </div>
             </div>
           </div>
 
@@ -695,14 +731,34 @@
         <!-- Right Column: Kotak Hasil AES -->
         <div id="aes-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/75 border border-white/10 rounded-2xl p-4 sm:p-5 transition-all">
           <div>
-            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-glow-indigo"></span>
                 <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Kotak Hasil AES</h3>
+                <span id="aes-badge" class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-800 text-slate-400">
+                  Siap Memproses
+                </span>
               </div>
-              <span id="aes-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400">
-                Siap Memproses
-              </span>
+              <div class="flex items-center gap-1.5 ml-auto">
+                <button
+                  type="button"
+                  onclick="downloadResult('aes-output', 'aes_result.txt')"
+                  class="text-[11px] font-mono font-semibold text-slate-300 hover:text-indigo-300 bg-slate-900 border border-white/15 px-2.5 py-1 rounded-lg transition active:scale-95 flex items-center gap-1 shadow-sm"
+                  title="Unduh Teks Hasil AES (.txt)"
+                >
+                  <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  <span>Unduh</span>
+                </button>
+                <button
+                  type="button"
+                  onclick="shareResult('aes-output', 'AES-256 Cipher - Ayunda')"
+                  class="text-[11px] font-mono font-semibold text-indigo-300 bg-indigo-500/15 border border-indigo-400/30 px-2.5 py-1 rounded-lg transition active:scale-95 flex items-center gap-1 shadow-sm"
+                  title="Bagikan Hasil AES"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                  <span>Bagikan</span>
+                </button>
+              </div>
             </div>
 
             <textarea
@@ -832,14 +888,24 @@
               </svg>
               <span>Public Key (Enkripsi)</span>
             </label>
-            <button
-              type="button"
-              id="btn-copy-pub"
-              onclick="copyOutput('rsa-public-key', 'btn-copy-pub')"
-              class="text-[11px] font-mono font-semibold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
-            >
-              Salin Key
-            </button>
+            <div class="flex items-center gap-1.5">
+              <button
+                type="button"
+                onclick="downloadResult('rsa-public-key', 'public_key.pem')"
+                class="text-[10px] font-mono font-semibold text-slate-300 hover:text-cyan-300 bg-slate-900 border border-white/15 px-2 py-1 rounded-lg active:scale-95 transition"
+                title="Unduh Public Key PEM"
+              >
+                Unduh
+              </button>
+              <button
+                type="button"
+                id="btn-copy-pub"
+                onclick="copyOutput('rsa-public-key', 'btn-copy-pub')"
+                class="text-[10px] font-mono font-semibold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
+              >
+                Salin Key
+              </button>
+            </div>
           </div>
           <textarea
             id="rsa-public-key"
@@ -859,14 +925,24 @@
               </svg>
               <span>Private Key (Dekripsi)</span>
             </label>
-            <button
-              type="button"
-              id="btn-copy-priv"
-              onclick="copyOutput('rsa-private-key', 'btn-copy-priv')"
-              class="text-[11px] font-mono font-semibold text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
-            >
-              Salin Key
-            </button>
+            <div class="flex items-center gap-1.5">
+              <button
+                type="button"
+                onclick="downloadResult('rsa-private-key', 'private_key.pem')"
+                class="text-[10px] font-mono font-semibold text-slate-300 hover:text-indigo-300 bg-slate-900 border border-white/15 px-2 py-1 rounded-lg active:scale-95 transition"
+                title="Unduh Private Key PEM"
+              >
+                Unduh
+              </button>
+              <button
+                type="button"
+                id="btn-copy-priv"
+                onclick="copyOutput('rsa-private-key', 'btn-copy-priv')"
+                class="text-[10px] font-mono font-semibold text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2.5 py-1 rounded-lg active:scale-95 transition"
+              >
+                Salin Key
+              </button>
+            </div>
           </div>
           <textarea
             id="rsa-private-key"
@@ -935,14 +1011,34 @@
         <!-- Output RSA -->
         <div id="rsa-output-card" class="lg:col-span-6 flex flex-col justify-between bg-slate-950/75 border border-white/10 rounded-2xl p-4 sm:p-5 transition-all">
           <div>
-            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-glow-cyan"></span>
                 <h3 class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Kotak Hasil RSA</h3>
+                <span id="rsa-badge" class="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-800 text-slate-400">
+                  Siap Memproses
+                </span>
               </div>
-              <span id="rsa-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400">
-                Siap Memproses
-              </span>
+              <div class="flex items-center gap-1.5 ml-auto">
+                <button
+                  type="button"
+                  onclick="downloadResult('rsa-output', 'rsa_result.txt')"
+                  class="text-[11px] font-mono font-semibold text-slate-300 hover:text-cyan-300 bg-slate-900 border border-white/15 px-2.5 py-1 rounded-lg transition active:scale-95 flex items-center gap-1 shadow-sm"
+                  title="Unduh Teks Hasil RSA (.txt)"
+                >
+                  <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  <span>Unduh</span>
+                </button>
+                <button
+                  type="button"
+                  onclick="shareResult('rsa-output', 'RSA Cipher - Ayunda')"
+                  class="text-[11px] font-mono font-semibold text-cyan-300 bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 rounded-lg transition active:scale-95 flex items-center gap-1 shadow-sm"
+                  title="Bagikan Hasil RSA"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                  <span>Bagikan</span>
+                </button>
+              </div>
             </div>
 
             <textarea
@@ -1151,7 +1247,23 @@
   <!-- ========================================== -->
   <script>
     /* ----------------------------------------------------
-     * 1. WEB AUDIO API CYBER SOUND EFFECTS SYNTHESIZER
+     * 1. HAPTIC FEEDBACK (TACTILE TOUCH VIBRATION)
+     * ---------------------------------------------------- */
+    function triggerHaptic(type = 'light') {
+      if (navigator.vibrate) {
+        try {
+          if (type === 'light') navigator.vibrate(15);
+          else if (type === 'medium') navigator.vibrate(30);
+          else if (type === 'success') navigator.vibrate([20, 35, 20]);
+          else if (type === 'error') navigator.vibrate([40, 60, 40]);
+        } catch (e) {
+          // Ignore vibration errors on unsupported platforms
+        }
+      }
+    }
+
+    /* ----------------------------------------------------
+     * 2. WEB AUDIO API CYBER SOUND EFFECTS SYNTHESIZER
      * ---------------------------------------------------- */
     let soundEnabled = true;
     let audioCtx = null;
@@ -1197,6 +1309,7 @@
     }
 
     function playSound(effect) {
+      triggerHaptic(effect === 'error' ? 'error' : (effect === 'encrypt' || effect === 'decrypt' || effect === 'copy') ? 'success' : 'light');
       if (!soundEnabled) return;
 
       switch (effect) {
@@ -1390,6 +1503,7 @@
         document.getElementById('aes-input').value = 'Dokumen Rahasia Ayunda: Kode Akses Server #AY-2026';
         document.getElementById('aes-key').value = 'AyundaCyberKey#2026';
         updateCharCount('aes-input', 'aes-char-count');
+        evaluatePassphraseStrength();
         showToast('Contoh data AES-256 berhasil diisi!', 'info');
       } else if (activeTab === 'rsa') {
         document.getElementById('rsa-input').value = 'Pesan Terenkripsi RSA dari Ayunda.';
@@ -1507,6 +1621,111 @@
       } catch (err) {
         playSound('error');
         showToast('Gagal menyalin teks.', 'error');
+      }
+    }
+
+    function downloadResult(elementId, filename = 'cryptoweb_hasil.txt') {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.value;
+      if (!text || !text.trim()) {
+        playSound('error');
+        showToast('Kotak masih kosong, tidak ada file untuk diunduh!', 'error');
+        return;
+      }
+      try {
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        playSound('copy');
+        showToast(`File "${filename}" berhasil diunduh!`, 'success');
+      } catch (err) {
+        playSound('error');
+        showToast('Gagal mengunduh file.', 'error');
+      }
+    }
+
+    async function shareResult(elementId, title = 'Hasil Kriptografi - Ayunda') {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.value;
+      if (!text || !text.trim()) {
+        playSound('error');
+        showToast('Kotak masih kosong, tidak ada data untuk dibagikan!', 'error');
+        return;
+      }
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: title,
+            text: text
+          });
+          playSound('copy');
+          showToast('Data berhasil dibagikan!', 'success');
+        } catch (e) {
+          // User dismissed share dialog, nothing to do
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(text);
+          playSound('copy');
+          showToast('Share dialog tidak didukung peramban, teks disalin ke Clipboard!', 'info');
+        } catch (e) {
+          showToast('Gagal membagikan teks.', 'error');
+        }
+      }
+    }
+
+    function evaluatePassphraseStrength() {
+      const keyInput = document.getElementById('aes-key');
+      if (!keyInput) return;
+      const val = keyInput.value;
+      const bar = document.getElementById('aes-strength-bar');
+      const txt = document.getElementById('aes-strength-text');
+      if (!bar || !txt) return;
+
+      if (!val) {
+        bar.style.width = '0%';
+        bar.className = 'h-full transition-all duration-300 rounded-full bg-slate-700';
+        txt.textContent = 'Belum Diisi';
+        txt.className = 'text-slate-500 font-semibold';
+        return;
+      }
+
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (val.length >= 14) score++;
+      if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+
+      if (score <= 1) {
+        bar.style.width = '20%';
+        bar.className = 'h-full transition-all duration-300 rounded-full bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.5)]';
+        txt.textContent = 'Sangat Lemah';
+        txt.className = 'text-rose-400 font-bold';
+      } else if (score === 2) {
+        bar.style.width = '45%';
+        bar.className = 'h-full transition-all duration-300 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]';
+        txt.textContent = 'Sedang';
+        txt.className = 'text-amber-400 font-bold';
+      } else if (score === 3 || score === 4) {
+        bar.style.width = '75%';
+        bar.className = 'h-full transition-all duration-300 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)]';
+        txt.textContent = 'Kuat (Aman)';
+        txt.className = 'text-cyan-300 font-bold';
+      } else {
+        bar.style.width = '100%';
+        bar.className = 'h-full transition-all duration-300 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]';
+        txt.textContent = 'Sangat Kuat / Kebal (Militer)';
+        txt.className = 'text-emerald-300 font-extrabold';
       }
     }
 
@@ -1691,6 +1910,7 @@
       const keyInput = document.getElementById('aes-key');
       keyInput.value = pass;
       keyInput.type = 'text';
+      evaluatePassphraseStrength();
       showToast('Passphrase kuat berhasil dibuat!', 'info');
     }
 
@@ -1757,6 +1977,7 @@
       document.getElementById('aes-key').value = '';
       document.getElementById('aes-output').value = '';
       updateCharCount('aes-input', 'aes-char-count');
+      evaluatePassphraseStrength();
       updateBadge('aes-badge', 'Siap Memproses', 'idle');
       showToast('Kolom AES Encryption telah direset.', 'info');
     }
